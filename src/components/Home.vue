@@ -35,7 +35,9 @@
         </v-main>
 
         <v-footer app>
-            <span>&copy; {{ new Date().getFullYear() }} By DDDDanny</span>
+            <span style="font-size: x-small">&copy; {{ new Date().getFullYear() }} By DDDDanny
+                <v-icon size="large">mdi-zodiac-aquarius</v-icon>
+            </span>
         </v-footer>
     </v-app>
 </template>
