@@ -10,14 +10,14 @@
                         <v-list-item-title class="title_temp">Home</v-list-item-title>
                     </v-list-item-content>
                 </v-list-item>
-                <v-list-group :prepend-icon="item.iconName" no-action v-for="item in menuList" :key="item.nodeName">
+                <v-list-group :prepend-icon="iconName" no-action v-for="{children, iconName, nodeName} in menuList" :key="nodeName">
                     <template v-slot:activator>
-                        <v-list-item-title class="title_temp">{{ item.nodeName }}</v-list-item-title>
+                        <v-list-item-title class="title_temp">{{ nodeName }}</v-list-item-title>
                     </template>
-                    <v-list-item v-for="secondMenu in item.children" :key="secondMenu.nodeName" link :to="secondMenu.path">
-                        <v-list-item-title v-text="secondMenu.nodeName"></v-list-item-title>
+                    <v-list-item v-for="{iconName, nodeName, path} in (children)" :key="nodeName" link :to="path">
+                        <v-list-item-title v-text="nodeName"></v-list-item-title>
                         <v-list-item-icon>
-                            <v-icon v-text="secondMenu.iconName"></v-icon>
+                            <v-icon v-text="iconName"></v-icon>
                         </v-list-item-icon>
                     </v-list-item>
                 </v-list-group>
