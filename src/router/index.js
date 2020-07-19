@@ -3,6 +3,7 @@ import VueRouter from 'vue-router'
 import Home from "@/components/Home";
 import AboutMe from "@/components/about/AboutMe"
 import Welcome from "@/components/Welcome"
+import AboutToolHub from "@/components/about/AboutToolHub"
 
 Vue.use(VueRouter);
 
@@ -10,8 +11,9 @@ Vue.use(VueRouter);
   {
     path: '/', name: 'Home', component: Home, redirect: '/welcome',
     children: [
-       {path: '/welcome', name: 'Welcome', component: Welcome },
-       {path: '/about/me', name: 'AboutMe', component: AboutMe }
+       {path: '/welcome',  component: Welcome },
+       {path: '/about/me',  component: AboutMe },
+       {path: '/about/toolHub',  component: AboutToolHub },
     ]
   },
 ];

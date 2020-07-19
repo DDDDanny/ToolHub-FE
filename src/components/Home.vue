@@ -1,21 +1,21 @@
 <template>
     <v-app id="inspire">
         <v-navigation-drawer v-model="drawer" app clipped>
-            <v-list dense>
+            <v-list rounded>
                 <v-list-item link to="/welcome">
                     <v-list-item-action>
                         <v-icon>mdi-home</v-icon>
                     </v-list-item-action>
                     <v-list-item-content>
-                        <v-list-item-title class="title_temp">Home</v-list-item-title>
+                        <v-list-item-title class="">Home</v-list-item-title>
                     </v-list-item-content>
                 </v-list-item>
                 <v-list-group :prepend-icon="iconName" no-action v-for="{children, iconName, nodeName} in menuList" :key="nodeName">
                     <template v-slot:activator>
-                        <v-list-item-title class="title_temp">{{ nodeName }}</v-list-item-title>
+                        <v-list-item-title class="">{{ nodeName }}</v-list-item-title>
                     </template>
                     <v-list-item v-for="{iconName, nodeName, path} in (children)" :key="nodeName" link :to="path">
-                        <v-list-item-title v-text="nodeName"></v-list-item-title>
+                        <v-list-item-title v-text="nodeName" class="title_temp"></v-list-item-title>
                         <v-list-item-icon>
                             <v-icon v-text="iconName"></v-icon>
                         </v-list-item-icon>
@@ -72,6 +72,6 @@
 
 <style lang="less">
     .title_temp{
-        font-size: 15px !important;
+        font-size: 14px !important;
     }
 </style>
