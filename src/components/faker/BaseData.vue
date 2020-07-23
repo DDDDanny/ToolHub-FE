@@ -12,10 +12,10 @@
                         </v-card-title>
                         <hr>
                         <v-list nav>
-                            <v-list-item-group v-model="item" color="primary">
-                                <v-list-item v-for="(item, i) in items" :key="i">
+                            <v-list-item-group color="primary">
+                                <v-list-item v-for="{catName, id} in catItems" :key="id">
                                     <v-list-item-content>
-                                        <v-list-item-action-text style="font-size: 13px" v-html="item.title"></v-list-item-action-text>
+                                        <v-list-item-action-text style="font-size: 13px" v-html="catName"></v-list-item-action-text>
                                     </v-list-item-content>
                                 </v-list-item>
                             </v-list-item-group>
@@ -67,18 +67,21 @@
                     { text: 'FakerData', disabled: false },
                     { text: 'Base', disabled: false }
                 ],
-                items: [
-                    {
-                        title: '类别一',
-                    },
-                    {
-                        title: '类别二',
-                    },
-                    {
-                        title: '类别三',
-                    },
-                ],
+                catItems: {},
                 result: '这是Faker Data结果信息！'
+            }
+        },
+        created() {
+            this.getCategoryList()
+        },
+        methods: {
+            async getCategoryList() {
+                const {data: res} = await this.$http.get('/faker/list/base')
+                if (res.meta.status !== 200) {
+                    return
+                }
+                this.catItems = res.data
+                console.log(this.catItems)
             }
         }
     }
