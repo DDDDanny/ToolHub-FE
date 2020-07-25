@@ -49,10 +49,10 @@
                                         </v-row>
                                         <v-row justify="end" class="create_btn">
                                             <v-col cols="12" md="1">
-                                                <v-btn dark class="mr-1" @click="paramsFormReset" large >重置</v-btn>
+                                                <v-btn dark class="mr-1" @click="paramsFormReset" large elevation="12" >重置</v-btn>
                                             </v-col>
                                             <v-col cols="12" md="2">
-                                                <v-btn dark class="mr-4" @click="paramsFormSubmit" large width="200px" color="blue">生成数据</v-btn>
+                                                <v-btn dark class="mr-4" @click="paramsFormSubmit" large width="200px" color="blue" elevation="12">生成数据</v-btn>
                                             </v-col>
                                         </v-row>
                                     </v-container>
