@@ -15,7 +15,7 @@
                             <v-list-item-group color="primary">
                                 <v-list-item v-for="{catName, id} in catItems" :key="id" @click="selectedCat(id)">
                                     <v-list-item-content>
-                                        <v-list-item-action-text style="font-size: 13px" v-html="catName"></v-list-item-action-text>
+                                        <v-list-item-action-text style="font-size: 15px" v-html="catName"></v-list-item-action-text>
                                     </v-list-item-content>
                                 </v-list-item>
                             </v-list-item-group>
@@ -32,7 +32,12 @@
                                     <span style="margin-left: 10px">参数 (Parameters)</span>
                                 </v-card-title>
                                 <hr>
-                                <v-form :v-model="paramsForm" ref="form">
+                                <v-row v-if="selectedCatId === '000'" justify="center" style="margin-top: 100px">
+                                    <v-alert color="warning" dark elevation="12" width="300px" icon="mdi-gamepad-variant-outline" style="align-items: center">
+                                        请选择左侧类别（Category）
+                                    </v-alert>
+                                </v-row>
+                                <v-form :v-model="paramsForm" ref="form" v-else>
                                     <v-container>
                                         <v-row justify="center" class="pa-6">
                                             <v-col cols="12" md="6">
@@ -92,7 +97,7 @@
                     firstName: ''
                 },
                 result: '这是Faker Data结果信息！',
-                selectedCatId: '100',
+                selectedCatId: '000',
             }
         },
         created() {
