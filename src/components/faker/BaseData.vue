@@ -115,6 +115,40 @@
                                         </v-row>
                                     </v-container>
                                 </v-form>
+                                <v-form :v-model="dateTimeParamsForm" ref="form" v-else-if="selectedCatId === 103">
+                                    <v-container>
+                                        <v-row justify="start" class="pa-6">
+                                            <v-col cols="8" md="4">
+                                                <v-text-field v-model="dateTimeParamsForm.year" label="年（Year）"></v-text-field>
+                                            </v-col>
+                                            <v-col cols="8" md="4">
+                                                <v-text-field v-model="dateTimeParamsForm.month" label="月（Month）"></v-text-field>
+                                            </v-col>
+                                            <v-col cols="8" md="4">
+                                                <v-text-field v-model="dateTimeParamsForm.day" label="日（Day）"></v-text-field>
+                                            </v-col>
+                                            <v-col cols="8" md="4">
+                                                <v-text-field v-model="dateTimeParamsForm.hour" label="小时（Hour）"></v-text-field>
+                                            </v-col>
+                                            <v-col cols="8" md="4">
+                                                <v-text-field v-model="dateTimeParamsForm.minute" label="分钟（Minute）"></v-text-field>
+                                            </v-col>
+                                            <v-col cols="8" md="4">
+                                                <v-text-field v-model="dateTimeParamsForm.seconds" label="秒（Seconds）"></v-text-field>
+                                            </v-col>
+                                            <v-col cols="24" md="12">
+                                                <v-row justify="end" class="mt-2">
+                                                    <v-col cols="12" md="1">
+                                                        <v-btn dark class="mr-1" @click="paramsFormReset" large elevation="12" >重置</v-btn>
+                                                    </v-col>
+                                                    <v-col cols="12" md="2" class="ml-4">
+                                                        <v-btn dark class="mr-4" @click="paramsFormSubmit" large width="200px" color="blue" elevation="12">生成数据</v-btn>
+                                                    </v-col>
+                                                </v-row>
+                                            </v-col>
+                                        </v-row>
+                                    </v-container>
+                                </v-form>
                             </v-card>
                         </v-col>
                     </v-row>
@@ -155,16 +189,16 @@
                     firstName: ''
                 },
                 addrParamsForm: {
-                    country: '',
-                    province: '',
-                    city: '',
-                    district: '',
-                    street: '',
-                    building: '',
+                    country: '', province: '', city: '',
+                    district: '', street: '', building: '',
                     postcode: ''
                 },
                 phoneParamsForm: {
                     prefix: ''
+                },
+                dateTimeParamsForm: {
+                    year: '', month: '', day: '',
+                    hour: '', minute: '', seconds: ''
                 },
                 result: '这是Faker Data结果信息！',
                 selectedCatId: '000',
@@ -196,6 +230,12 @@
                 this.addrParamsForm.building = ''
                 this.addrParamsForm.postcode = ''
                 this.phoneParamsForm.prefix = ''
+                this.dateTimeParamsForm.year = ''
+                this.dateTimeParamsForm.month = ''
+                this.dateTimeParamsForm.day = ''
+                this.dateTimeParamsForm.hour = ''
+                this.dateTimeParamsForm.minute = ''
+                this.dateTimeParamsForm.seconds = ''
             },
             // 获取当前选择类型的ID
             selectedCat(id) {
@@ -208,6 +248,7 @@
                 if (this.selectedCatId === 100) paramsForm = this.nameParamsForm
                 else if (this.selectedCatId === 101) paramsForm = this.addrParamsForm
                 else if (this.selectedCatId === 102) paramsForm = this.phoneParamsForm
+                else if (this.selectedCatId === 103) paramsForm = this.dateTimeParamsForm
                 const submitForm = {
                     cat: this.selectedCatId.toString(),
                     attr: paramsForm
