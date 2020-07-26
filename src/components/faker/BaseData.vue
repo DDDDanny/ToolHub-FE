@@ -37,22 +37,61 @@
                                         请选择左侧类别（Category）
                                     </v-alert>
                                 </v-row>
-                                <v-form :v-model="paramsForm" ref="form" v-else>
+                                <v-form :v-model="nameParamsForm" ref="form" v-else-if="selectedCatId === 100">
                                     <v-container>
-                                        <v-row justify="center" class="pa-6">
+                                        <v-row justify="start" class="pa-6">
                                             <v-col cols="12" md="6">
-                                                <v-text-field v-model="paramsForm.lastName" :counter="10" label="姓氏（Last name）"></v-text-field>
+                                                <v-text-field v-model="nameParamsForm.lastName" label="姓氏（Last name）"></v-text-field>
                                             </v-col>
                                             <v-col cols="12" md="6">
-                                                <v-text-field v-model="paramsForm.firstName" :counter="10" label="名字（First name）"></v-text-field>
+                                                <v-text-field v-model="nameParamsForm.firstName" label="名字（First name）"></v-text-field>
+                                            </v-col>
+                                            <v-col cols="24" md="12">
+                                                <v-row justify="end" class="mt-2">
+                                                    <v-col cols="12" md="1">
+                                                        <v-btn dark class="mr-1" @click="paramsFormReset" large elevation="12" >重置</v-btn>
+                                                    </v-col>
+                                                    <v-col cols="12" md="2" class="ml-4">
+                                                        <v-btn dark class="mr-4" @click="paramsFormSubmit" large width="200px" color="blue" elevation="12">生成数据</v-btn>
+                                                    </v-col>
+                                                </v-row>
                                             </v-col>
                                         </v-row>
-                                        <v-row justify="end" class="create_btn">
-                                            <v-col cols="12" md="1">
-                                                <v-btn dark class="mr-1" @click="paramsFormReset" large elevation="12" >重置</v-btn>
+                                    </v-container>
+                                </v-form>
+                                <v-form :v-model="addrParamsForm" ref="form" v-else-if="selectedCatId === 101">
+                                    <v-container>
+                                        <v-row justify="start" class="pa-6">
+                                            <v-col cols="6" md="3">
+                                                <v-text-field v-model="addrParamsForm.country" label="国家（Country）"></v-text-field>
                                             </v-col>
-                                            <v-col cols="12" md="2">
-                                                <v-btn dark class="mr-4" @click="paramsFormSubmit" large width="200px" color="blue" elevation="12">生成数据</v-btn>
+                                            <v-col cols="6" md="3">
+                                                <v-text-field v-model="addrParamsForm.province" label="省（Province）"></v-text-field>
+                                            </v-col>
+                                            <v-col cols="6" md="3">
+                                                <v-text-field v-model="addrParamsForm.city" label="城市（City）"></v-text-field>
+                                            </v-col>
+                                            <v-col cols="6" md="3">
+                                                <v-text-field v-model="addrParamsForm.district" label="地区（District）"></v-text-field>
+                                            </v-col>
+                                            <v-col cols="6" md="3">
+                                                <v-text-field v-model="addrParamsForm.street" label="街道（Street）"></v-text-field>
+                                            </v-col>
+                                            <v-col cols="6" md="3">
+                                                <v-text-field v-model="addrParamsForm.building" label="建筑（Building）"></v-text-field>
+                                            </v-col>
+                                            <v-col cols="6" md="3">
+                                                <v-text-field v-model="addrParamsForm.postcode" label="邮编（Postcode）"></v-text-field>
+                                            </v-col>
+                                            <v-col cols="24" md="12">
+                                                <v-row justify="end" class="mt-2">
+                                                    <v-col cols="12" md="1">
+                                                        <v-btn dark class="mr-1" @click="paramsFormReset" large elevation="12" >重置</v-btn>
+                                                    </v-col>
+                                                    <v-col cols="12" md="2" class="ml-4">
+                                                        <v-btn dark class="mr-4" @click="paramsFormSubmit" large width="200px" color="blue" elevation="12">生成数据</v-btn>
+                                                    </v-col>
+                                                </v-row>
                                             </v-col>
                                         </v-row>
                                     </v-container>
@@ -92,9 +131,18 @@
                     { text: 'Base', disabled: false }
                 ],
                 catItems: {},
-                paramsForm: {
+                nameParamsForm: {
                     lastName: '',
                     firstName: ''
+                },
+                addrParamsForm: {
+                    country: '',
+                    province: '',
+                    city: '',
+                    district: '',
+                    street: '',
+                    building: '',
+                    postcode: ''
                 },
                 result: '这是Faker Data结果信息！',
                 selectedCatId: '000',
@@ -102,9 +150,9 @@
         },
         created() {
             this.getCategoryList()
-            this.isActive = true
         },
         methods: {
+            // 获取类别列表
             async getCategoryList() {
                 const {data: res} = await this.$http.get('/faker/list/base')
                 if (res.meta.status !== 200) {
@@ -113,33 +161,43 @@
                 this.catItems = res.data
                 console.log(this.catItems)
             },
+            // 重置表单
             paramsFormReset() {
                 this.$refs.form.reset()
-                this.paramsForm.firstName = ''
-                this.paramsForm.lastName = ''
+                this.nameParamsForm.firstName = ''
+                this.nameParamsForm.lastName = ''
+                this.addrParamsForm.country = ''
+                this.addrParamsForm.province = ''
+                this.addrParamsForm.city = ''
+                this.addrParamsForm.district = ''
+                this.addrParamsForm.street = ''
+                this.addrParamsForm.building = ''
+                this.addrParamsForm.postcode = ''
             },
+            // 获取当前选择类型的ID
+            selectedCat(id) {
+                this.selectedCatId = id
+                console.log(this.selectedCatId)
+            },
+            // 生成数据
             async paramsFormSubmit() {
+                let paramsForm
+                if (this.selectedCatId === 100) paramsForm = this.nameParamsForm
+                else if (this.selectedCatId === 101) paramsForm = this.addrParamsForm
                 const submitForm = {
                     cat: this.selectedCatId.toString(),
-                    attr: this.paramsForm
+                    attr: paramsForm
                 }
                 const {data: res} = await this.$http.post('/faker/random', submitForm)
                 if (res.meta.status !== 200) {
                     return
                 }
                 this.result = res.data.result
-            },
-            selectedCat(id) {
-                this.selectedCatId = id
-                console.log(this.selectedCatId)
             }
         }
     }
 </script>
 
 <style scoped lang="less">
-    .create_btn{
-        padding-top: 100px;
-        padding-right: 40px;
-    }
+
 </style>
