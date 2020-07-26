@@ -96,6 +96,25 @@
                                         </v-row>
                                     </v-container>
                                 </v-form>
+                                <v-form :v-model="phoneParamsForm" ref="form" v-else-if="selectedCatId === 102">
+                                    <v-container>
+                                        <v-row justify="start" class="pa-6">
+                                            <v-col cols="24" md="6">
+                                                <v-text-field v-model="phoneParamsForm.prefix" label="手机号前三位（Prefix）"></v-text-field>
+                                            </v-col>
+                                            <v-col cols="24" md="12">
+                                                <v-row justify="end" class="mt-2">
+                                                    <v-col cols="12" md="1">
+                                                        <v-btn dark class="mr-1" @click="paramsFormReset" large elevation="12" >重置</v-btn>
+                                                    </v-col>
+                                                    <v-col cols="12" md="2" class="ml-4">
+                                                        <v-btn dark class="mr-4" @click="paramsFormSubmit" large width="200px" color="blue" elevation="12">生成数据</v-btn>
+                                                    </v-col>
+                                                </v-row>
+                                            </v-col>
+                                        </v-row>
+                                    </v-container>
+                                </v-form>
                             </v-card>
                         </v-col>
                     </v-row>
@@ -144,6 +163,9 @@
                     building: '',
                     postcode: ''
                 },
+                phoneParamsForm: {
+                    prefix: ''
+                },
                 result: '这是Faker Data结果信息！',
                 selectedCatId: '000',
             }
@@ -173,6 +195,7 @@
                 this.addrParamsForm.street = ''
                 this.addrParamsForm.building = ''
                 this.addrParamsForm.postcode = ''
+                this.phoneParamsForm.prefix = ''
             },
             // 获取当前选择类型的ID
             selectedCat(id) {
@@ -184,6 +207,7 @@
                 let paramsForm
                 if (this.selectedCatId === 100) paramsForm = this.nameParamsForm
                 else if (this.selectedCatId === 101) paramsForm = this.addrParamsForm
+                else if (this.selectedCatId === 102) paramsForm = this.phoneParamsForm
                 const submitForm = {
                     cat: this.selectedCatId.toString(),
                     attr: paramsForm
