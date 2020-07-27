@@ -32,9 +32,19 @@
                                     <span style="margin-left: 10px">参数 (Parameters)</span>
                                 </v-card-title>
                                 <hr>
-                                <v-row v-if="selectedCatId === '000'" justify="center" style="margin-top: 100px">
-                                    <v-alert color="warning" dark elevation="12" width="300px" icon="mdi-gamepad-variant-outline" style="align-items: center">
-                                        请选择左侧类别（Category）
+                                <v-row v-if="selectedCatId === '000'" justify="center" style="margin-top: 80px">
+                                    <v-col cols="24" md="8">
+                                        <v-row justify="center">
+                                            <v-alert color="blue" dark elevation="12" width="470px" icon="mdi-google-downasaur" style="align-items: center" border="left">
+                                                <span>请选择左侧类别（Category）</span><br>
+                                                <span>温馨提示： 如果输入错误参数，也必将得到错误结果！</span>
+                                            </v-alert>
+                                        </v-row>
+                                    </v-col>
+                                </v-row>
+                                <v-row v-if="selectedCatId === 104 " justify="center" style="margin-top: 100px">
+                                    <v-alert color="blue" dark elevation="12" width="450px" icon="mdi-gamepad-variant-outline" style="align-items: center" border="left">
+                                        想要更多随机数据，请联系我: 707956456@qq.com
                                     </v-alert>
                                 </v-row>
                                 <v-form :v-model="nameParamsForm" ref="form" v-else-if="selectedCatId === 100">
@@ -240,6 +250,7 @@
             // 获取当前选择类型的ID
             selectedCat(id) {
                 this.selectedCatId = id
+                this.result = '这是Faker Data结果信息！'
                 console.log(this.selectedCatId)
             },
             // 生成数据
