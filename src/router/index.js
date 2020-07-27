@@ -5,6 +5,7 @@ import AboutMe from "@/components/about/AboutMe"
 import Welcome from "@/components/Welcome"
 import AboutToolHub from "@/components/about/AboutToolHub"
 import BaseData from "@/components/faker/BaseData"
+import ExportData from "@/components/faker/ExportData"
 
 Vue.use(VueRouter);
 
@@ -15,7 +16,8 @@ Vue.use(VueRouter);
        { path: '/welcome',  component: Welcome },
        { path: '/about/me',  component: AboutMe },
        { path: '/about/toolHub',  component: AboutToolHub },
-       { path: '/faker/base',  component: BaseData },
+       { path: '/faker/dataGenerate',  component: BaseData },
+       { path: '/faker/dataExport',  component: ExportData },
     ]
   },
 ];

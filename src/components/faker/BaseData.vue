@@ -191,7 +191,7 @@
                 breadItems: [
                     { text: 'Home', disabled: false, to: '/' },
                     { text: 'FakerData', disabled: false },
-                    { text: 'Base', disabled: false }
+                    { text: 'GenerateData', disabled: false }
                 ],
                 catItems: {},
                 nameParamsForm: {
