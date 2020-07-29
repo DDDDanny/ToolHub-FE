@@ -10,17 +10,26 @@
                         <span style="margin-left: 10px">待加密文 (PlainText)</span>
                     </v-card-title>
                     <hr>
-                    <v-form class="mt-2">
+                    <v-form class="mt-1">
                         <v-container fluid>
-                            <v-radio-group row dark label="加密类型：">
-                                <v-radio label="Base64" value="radio-1"></v-radio>
-                                <v-radio label="MD5" value="radio-2"></v-radio>
-                            </v-radio-group>
+                            <v-row justify="start">
+                                <v-col cols="8" md="4">
+                                    <v-radio-group row dark label="加密类型：">
+                                        <v-radio label="Base64" value="radio-1"></v-radio>
+                                        <v-radio label="MD5" value="radio-2"></v-radio>
+                                        <v-radio label="hmac" value="radio-3"></v-radio>
+                                        <v-radio label="sha1" value="radio-4"></v-radio>
+                                    </v-radio-group>
+                                </v-col>
+                                <v-col cols="16" md="8">
+                                    <v-row justify="center" class="mr-1">
+                                        <v-textarea label="盐（Salt）" no-resize outlined rows="1" row-height="10"></v-textarea>
+                                    </v-row>
+                                </v-col>
+                            </v-row>
                             <v-col cols="24" md="24">
-                                <v-row justify="center">
-                                    <v-col cols="12">
-                                        <v-textarea label="明文（PlainText）" height="100" no-resize outlined rows="3" row-height="10"></v-textarea>
-                                    </v-col>
+                                <v-row justify="center" class="mr-1 ml-1">
+                                    <v-textarea label="明文（PlainText）" height="100" no-resize outlined rows="3" row-height="10"></v-textarea>
                                 </v-row>
                             </v-col>
                             <v-col cols="24" md="24">
