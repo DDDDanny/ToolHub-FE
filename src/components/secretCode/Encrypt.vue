@@ -24,7 +24,10 @@
                                 <v-col cols="16" md="8">
                                     <v-row justify="center" class="mr-1">
                                         <v-textarea dark label="盐（Salt）" no-resize outlined rows="1" row-height="10"
-                                                    v-model="encryptForm.salt">
+                                                    v-model="encryptForm.salt" v-if="encryptForm.cate === '1'">
+                                        </v-textarea>
+                                        <v-textarea dark label="盐（Salt）" no-resize outlined rows="1" row-height="10"
+                                                    v-model="encryptForm.salt" :rules="saltRule" v-else>
                                         </v-textarea>
                                     </v-row>
                                 </v-col>
@@ -32,7 +35,7 @@
                             <v-col cols="24" md="24">
                                 <v-row justify="center" class="mr-1 ml-1">
                                     <v-textarea label="明文（PlainText）" height="100" no-resize outlined rows="3"
-                                                row-height="10" v-model="encryptForm.waitStr">
+                                                row-height="10" v-model="encryptForm.waitStr" :rules="waitStrRule">
                                     </v-textarea>
                                 </v-row>
                             </v-col>
@@ -83,11 +86,19 @@
                     salt: '',
                     waitStr: ''
                 },
-                encryptResult: ''
+                encryptResult: '',
+                saltRule: [
+                    v => !!v || '加密盐不能为空 (Salt is required)',
+                ],
+                waitStrRule: [
+                    v => !!v || '明文不能为空 (PlainText is required)',
+                ]
             }
         },
         methods: {
             async goEncrypt() {
+                const jud = this.$refs.form.validate()
+                if (!jud) return
                 const {data: res} = await this.$http.post('secretCode/goEncrypt', this.encryptForm)
                 if (res.meta.status !== 200) {
                     return
