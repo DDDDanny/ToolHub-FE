@@ -10,7 +10,7 @@
                         <span style="margin-left: 10px">待解密文 (CipherText)</span>
                     </v-card-title>
                     <hr>
-                    <v-form class="mt-2" :v-model="decryptForm">
+                    <v-form class="mt-2" :v-model="decryptForm" ref="form">
                         <v-container fluid>
                             <v-radio-group row dark label="解密类型：" v-model="decryptForm.cate">
                                 <v-radio label="Base64" value="1"></v-radio>
@@ -18,7 +18,9 @@
                             <v-col cols="24" md="24">
                                 <v-row justify="center">
                                     <v-col cols="12">
-                                        <v-textarea label="密文（CipherText）" height="100" no-resize outlined rows="3" row-height="10" v-model="decryptForm.waitStr"></v-textarea>
+                                        <v-textarea label="密文（CipherText）" height="100" no-resize outlined rows="3"
+                                                    row-height="10" v-model="decryptForm.waitStr" :rules="waitStrRules" required>
+                                        </v-textarea>
                                     </v-col>
                                 </v-row>
                             </v-col>
@@ -68,16 +70,23 @@
                     cate: '1',
                     waitStr: ''
                 },
-                decryptResult: ''
+                decryptResult: '',
+                waitStrRules: [
+                    v => !!v || '密文信息不能为空 (CipherText is required)',
+                ],
+                decryptFormRef: {}
             }
         },
         methods: {
             async goDecrypt() {
+                const jud = this.$refs.form.validate()
+                if (!jud) return
                 const {data: res} = await this.$http.post('secretCode/goDecrypt', this.decryptForm)
                 if (res.meta.status !== 200) {
                     return
                 }
                 this.decryptResult = res.data.result
+
             }
         }
     }
