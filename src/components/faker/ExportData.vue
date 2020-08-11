@@ -112,8 +112,7 @@
                     this.tableHeader.push('地址')
                     for (let i = 0; i < this.tableExpData.length; i++ ) this.tableExpData[i].addr = '地址' + i
                 }
-                if (this.tableHeader.length === 0) this.emptyFlag = true
-                console.log(this.tableExpData)
+                this.emptyFlag = this.tableHeader.length === 0;
             }
         }
     }
