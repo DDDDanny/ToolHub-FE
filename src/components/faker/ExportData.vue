@@ -115,7 +115,10 @@
                 this.emptyFlag = this.tableHeader.length === 0;
             },
             exportData() {
-                const {data: res} = this.$http.get('/faker/export', {responseType: 'blob'}).then((res) => {
+                const {data: res} = this.$http.get('/faker/export',{
+                    responseType: 'blob',
+                    params: {paramsList: this.tableHeader.toString(), dataNum: this.dataNum}
+                }).then((res) => {
                     this.$utils.exportUtils(res,'FakerDataExport.xlsx')
                 })
                 console.log(res)
