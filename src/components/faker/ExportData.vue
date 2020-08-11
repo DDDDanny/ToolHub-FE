@@ -32,7 +32,7 @@
                                     <v-btn dark class="mr-1" color="success" large elevation="12" @click="previewTable">预览</v-btn>
                                 </v-col>
                                 <v-col cols="12" md="2" class="ml-4">
-                                    <v-btn dark class="mr-4" large width="200px" color="blue" elevation="12">导出数据</v-btn>
+                                    <v-btn dark class="mr-4" large width="200px" color="blue" elevation="12" @click="exportData">导出数据</v-btn>
                                 </v-col>
                             </v-row>
                         </v-col>
@@ -113,6 +113,12 @@
                     for (let i = 0; i < this.tableExpData.length; i++ ) this.tableExpData[i].addr = '地址' + i
                 }
                 this.emptyFlag = this.tableHeader.length === 0;
+            },
+            exportData() {
+                const {data: res} = this.$http.get('/faker/export', {responseType: 'blob'}).then((res) => {
+                    this.$utils.exportUtils(res,'FakerDataExport.xlsx')
+                })
+                console.log(res)
             }
         }
     }

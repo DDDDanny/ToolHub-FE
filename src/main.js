@@ -7,6 +7,7 @@ import axios from 'axios'
 import vuetify from "@/plugins/vuetify"
 import 'element-ui'
 import './plugins/vuetify.js'
+import ExportUtils from "@/utils/ExportUtils"
 
 Vue.config.productionTip = false;
 
@@ -22,3 +23,5 @@ new Vue({
   vuetify,
   render: h => h(App),
 }).$mount('#app');
+
+Object.defineProperty(Vue.prototype, '$utils', {value: ExportUtils})
