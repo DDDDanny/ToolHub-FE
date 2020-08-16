@@ -52,8 +52,8 @@
                             </v-chip>
                         </v-col>
                     </v-row>
-                    <v-row justify="right" class="mt-8">
-                        <v-col cols="24" md="2" class="mr-2">
+                    <v-row class="mt-8">
+                        <v-col cols="24" md="2">
                             <v-chip color="#6259da">
                                 <v-avatar left>
                                     <v-icon>mdi-sticker-emoji</v-icon>
@@ -61,7 +61,7 @@
                                 <span>追求完美</span>
                             </v-chip>
                         </v-col>
-                        <v-col cols="24" md="2" class="mr-2">
+                        <v-col cols="24" md="2">
                             <v-chip color="#7235ac">
                                 <v-avatar left>
                                     <v-icon>mdi-vector-square</v-icon>
@@ -69,7 +69,23 @@
                                 <span>强迫症</span>
                             </v-chip>
                         </v-col>
-                        <v-col cols="12" md="2" class="mr-4">
+                        <v-col cols="24" md="2">
+                            <v-chip color="#7235ac">
+                                <v-avatar left>
+                                    <v-icon>mdi-human-scooter</v-icon>
+                                </v-avatar>
+                                爱生活
+                            </v-chip>
+                        </v-col>
+                        <v-col cols="24" md="2">
+                            <v-chip color="#7235ac">
+                                <v-avatar left>
+                                    <v-icon>mdi-laptop</v-icon>
+                                </v-avatar>
+                                爱编程
+                            </v-chip>
+                        </v-col>
+                        <v-col cols="12" md="2">
                             <v-chip color="#199ae4">
                                 <v-avatar left>
                                     <v-icon>mdi-bookshelf</v-icon>
@@ -77,15 +93,7 @@
                                 <span>学习和提升</span>
                             </v-chip>
                         </v-col>
-                        <v-col cols="24" md="3" class="mr-1">
-                            <v-chip color="#7235ac">
-                                <v-avatar left>
-                                    <v-icon>mdi-google-controller</v-icon>
-                                </v-avatar>
-                                喜欢做一些有趣的事情
-                            </v-chip>
-                        </v-col>
-                        <v-col cols="24" md="2" class="mr-2">
+                        <v-col cols="24" md="2">
                             <v-chip color="#199ae4">
                                 <v-avatar left>
                                     <v-icon>mdi-language-python</v-icon>
@@ -95,6 +103,14 @@
                         </v-col>
                     </v-row>
                     <v-row justify="center" class="mt-8">
+                        <v-col cols="24" md="3" class="mr-1">
+                            <v-chip color="#7235ac">
+                                <v-avatar left>
+                                    <v-icon>mdi-google-controller</v-icon>
+                                </v-avatar>
+                                喜欢做一些有趣的事情
+                            </v-chip>
+                        </v-col>
                         <v-col cols="24" md="4" class="mr-6">
                             <v-chip color="#199ae4">
                                 <v-avatar left>
