@@ -8,6 +8,7 @@ import BaseData from "@/components/faker/BaseData"
 import ExportData from "@/components/faker/ExportData"
 import Encrypt from "@/components/secretCode/Encrypt"
 import Decrypt from "@/components/secretCode/Decrypt"
+import RealPayment from "@/components/calculate/RealPayment"
 
 Vue.use(VueRouter);
 
@@ -22,6 +23,7 @@ const routes = [
        { path: '/faker/dataExport',  component: ExportData },
        { path: '/secretCode/encrypt',  component: Encrypt },
        { path: '/secretCode/decrypt',  component: Decrypt },
+       { path: '/calculate/realPayment',  component: RealPayment },
     ]
   },
 ];
