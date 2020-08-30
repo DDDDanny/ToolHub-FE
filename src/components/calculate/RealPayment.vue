@@ -17,45 +17,53 @@
         <v-row>
             <v-col>
                 <v-card dark elevation="10" height="630">
-                    <v-stepper v-model="e1" style="height: 100%" dark >
+                    <v-stepper v-model="initStep" style="height: 100%" dark >
                         <v-stepper-header>
-                            <v-stepper-step :complete="e1 > 1" step="1">输入商品总数</v-stepper-step>
-                            <v-divider></v-divider>
-                            <v-stepper-step :complete="e1 > 2" step="2">输入每个商品原价</v-stepper-step>
-                            <v-divider></v-divider>
-                            <v-stepper-step step="3">输入实际支付总金额</v-stepper-step>
+                            <template v-for="(item, i) in stepObj.stepData">
+                                <v-stepper-step :complete="initStep > item.stepIndex"
+                                                :step="item.stepIndex" :key="item.stepIndex">{{ item.stepDesc }}</v-stepper-step>
+                                <v-divider v-if="stepObj.stepData.length !== item.stepIndex" :key="i+6"></v-divider>
+                            </template>
                         </v-stepper-header>
                         <v-stepper-items>
-                            <v-stepper-content step="1">
-                                <div class="mb-12" style="height: 410px;">
-                                    <v-row justify="center">
-                                        <v-col cols="12" md="4">
-                                            <v-text-field label="商品总数" hint="请输入购买的商品总数" style="margin-top: 150px"></v-text-field>
-                                        </v-col>
-                                    </v-row>
+                            <v-stepper-content v-for="(item) in stepObj.stepData" :key="item.stepIndex" :step="item.stepIndex">
+                                <div v-if="item.stepIndex === 1">
+                                    <div class="mb-12" style="height: 410px;">
+                                        <v-row justify="center">
+                                            <v-col cols="12" md="4">
+                                                <v-text-field label="商品总数" hint="请输入购买的商品总数" style="margin-top: 150px"></v-text-field>
+                                            </v-col>
+                                        </v-row>
+                                    </div>
+                                    <div class="ml-7">
+                                        <v-btn color="success" @click="initStep = 2">下一步(Next)</v-btn>
+                                    </div>
                                 </div>
-                                <div class="ml-7">
-                                    <v-btn color="success" @click="e1 = 2">下一步(Next)</v-btn>
+                                <div v-else-if="item.stepIndex === 2">
+                                    <div class="mb-12" style="height: 410px;">
+                                        <v-row class="ml-8">
+                                            <v-col v-for="sign in goodsTotal" :key="sign" cols="12" md="2" class="mb-3 mr-12">
+                                                <v-text-field :label="`第${sign}个商品的原价`" hint="请输入购买的商品原价"></v-text-field>
+                                            </v-col>
+                                        </v-row>
+                                    </div>
+                                    <div class="ml-7">
+                                        <v-btn color="primary" @click="initStep = 1" class="mr-5">上一步(Back)</v-btn>
+                                        <v-btn color="success" @click="initStep = 3">下一步(Next)</v-btn>
+                                    </div>
                                 </div>
-                            </v-stepper-content>
-                            <v-stepper-content step="2">
-                                <v-card class="mb-12" color="grey lighten-1" height="420px"></v-card>
-                                <div class="ml-7">
-                                    <v-btn color="primary" @click="e1 = 1" class="mr-5">上一步(Back)</v-btn>
-                                    <v-btn color="success" @click="e1 = 3">下一步(Next)</v-btn>
-                                </div>
-                            </v-stepper-content>
-                            <v-stepper-content step="3">
-                                <div class="mb-12" style="height: 410px;">
-                                    <v-row justify="center">
-                                        <v-col cols="12" md="4">
-                                            <v-text-field label="实际支付金额" hint="请输入购买的所有商品实际支付金额" style="margin-top: 150px"></v-text-field>
-                                        </v-col>
-                                    </v-row>
-                                </div>
-                                <div class="ml-7">
-                                    <v-btn color="primary" @click="e1 = 2" class="mr-5">上一步(Back)</v-btn>
-                                    <v-btn color="success">计算(Calculate)</v-btn>
+                                <div v-else-if="item.stepIndex === 3">
+                                    <div class="mb-12" style="height: 410px;">
+                                        <v-row justify="center">
+                                            <v-col cols="12" md="4">
+                                                <v-text-field label="实际支付金额" hint="请输入购买的所有商品实际支付金额" style="margin-top: 150px"></v-text-field>
+                                            </v-col>
+                                        </v-row>
+                                    </div>
+                                    <div class="ml-7">
+                                        <v-btn color="primary" @click="initStep = 2" class="mr-5">上一步(Back)</v-btn>
+                                        <v-btn color="success">计算(Calculate)</v-btn>
+                                    </div>
                                 </div>
                             </v-stepper-content>
                         </v-stepper-items>
@@ -75,8 +83,22 @@
                     { text: 'Calculate', disabled: false },
                     { text: 'RealPayment', disabled: false }
                 ],
-                e1: 1
+                initStep: 1,
+                stepObj: {
+                    stepData: [
+                        { stepIndex: 1, stepDesc: '输入商品总数'},
+                        { stepIndex: 2, stepDesc: '输入每个商品原价'},
+                        { stepIndex: 3, stepDesc: '输入实际支付总金额'},
+                    ]
+                },
+                goodsTotal: 10
             }
+        },
+        created() {
+            // console.log(this.stepObj.stepData.length)
+        },
+        methods: {
+
         }
     }
 </script>
