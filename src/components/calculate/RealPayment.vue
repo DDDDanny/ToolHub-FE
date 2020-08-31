@@ -67,7 +67,7 @@
                                             </div>
                                             <div class="ml-7">
                                                 <v-btn color="primary" @click="backStep(item.stepIndex)" class="mr-5">上一步(Back)</v-btn>
-                                                <v-btn color="success">计算(Calculate)</v-btn>
+                                                <v-btn color="success" @click="calculatePrice">计算(Calculate)</v-btn>
                                             </div>
                                         </div>
                                 </v-stepper-content>
@@ -170,6 +170,12 @@
                 for (let i = 1; i <= parseInt(this.goodsTotal); i++ ) {
                     this.goodsUnitPrice.push({ id: i, goodsPrice: ''})
                 }
+            },
+            // 计算价格
+            async calculatePrice() {
+                const jud = this.$refs.form.validate()
+                if (!jud) return
+                console.log(this.goodsUnitPrice)
             }
         }
     }
