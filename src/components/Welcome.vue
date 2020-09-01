@@ -34,6 +34,22 @@
                 </v-card>
             </v-col>
             <v-col cols="4" md="3">
+                <v-card dark elevation="20" style="margin-top: 30px" height="370px">
+                    <v-img dark src="../static/welcome.jpg"></v-img>
+                    <v-card-text>
+                        <v-card-title size="xl">Calculate</v-card-title>
+                        <hr>
+                        <v-card-subtitle>用于计算数据</v-card-subtitle>
+                    </v-card-text>
+                    <v-bottom-navigation dark color="blue" height="50" absolute style="top: 360px">
+                        <v-btn value="favorites">
+                            <span>Favorites</span>
+                            <v-icon>mdi-heart</v-icon>
+                        </v-btn>
+                    </v-bottom-navigation>
+                </v-card>
+            </v-col>
+            <v-col cols="4" md="3">
                 <v-card dark elevation="20" style="margin-top: 30px" height="410px">
                     <v-card-text class="more-info">More...</v-card-text>
                 </v-card>
