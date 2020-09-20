@@ -9,6 +9,7 @@ import ExportData from "@/components/faker/ExportData"
 import Encrypt from "@/components/secretCode/Encrypt"
 import Decrypt from "@/components/secretCode/Decrypt"
 import RealPayment from "@/components/calculate/RealPayment"
+import FormatJson from "@/components/format/FormatJson";
 
 Vue.use(VueRouter);
 
@@ -24,6 +25,7 @@ const routes = [
        { path: '/secretCode/encrypt',  component: Encrypt },
        { path: '/secretCode/decrypt',  component: Decrypt },
        { path: '/calculate/realPayment',  component: RealPayment },
+       { path: '/format/json',  component: FormatJson },
     ]
   },
 ];
