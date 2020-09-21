@@ -29,10 +29,10 @@
                             </v-col>
                             <v-col cols="24" md="12">
                                 <v-row justify="end" class="mt-2">
-                                    <v-col cols="12" md="1">
+                                    <v-col cols="12" md="3" align="right">
                                         <v-btn dark class="mr-1" color="success" large elevation="12" @click="previewTable">预览</v-btn>
                                     </v-col>
-                                    <v-col cols="12" md="2" class="ml-4">
+                                    <v-col cols="12" md="3" class="ml-4">
                                         <v-btn dark class="mr-4" large width="200px" color="blue" elevation="12" @click="exportData">导出数据</v-btn>
                                     </v-col>
                                 </v-row>
