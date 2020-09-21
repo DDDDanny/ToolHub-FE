@@ -10,33 +10,11 @@
             <v-card-text>希望大家能够给我提出一些建议、意见和需求，也希望能和有兴趣的同学一起合作，共同完成这个项目😋</v-card-text>
             <v-card-title>技术栈</v-card-title>
             <v-card-text>
-                <v-row>
-                    <v-col cols="24" md="1">
-                        <v-chip color="success" small>
-                            <v-avatar left><v-icon>mdi-vuejs</v-icon></v-avatar>Vue.js
-                        </v-chip>
-                    </v-col>
-                    <v-col cols="24" md="1">
-                        <v-chip color="teal" small>
-                            <v-avatar left><v-icon>mdi-router-network</v-icon></v-avatar>Vue Router
-                        </v-chip>
-                    </v-col>
-                    <v-col cols="24" md="1" class="ml-8">
-                        <v-chip color="info" small>
-                            <v-avatar left><v-icon>mdi-vuetify</v-icon></v-avatar>Vuetify
-                        </v-chip>
-                    </v-col>
-                    <v-col cols="24" md="1" class="ml-3">
-                        <v-chip color="warning" small>
-                            <v-avatar left><v-icon>mdi-language-python</v-icon></v-avatar>Python
-                        </v-chip>
-                    </v-col>
-                    <v-col cols="24" md="1" class="ml-3">
-                        <v-chip color="red" small>
-                            <v-avatar left><v-icon>mdi-alpha-f-box-outline</v-icon></v-avatar>Flask
-                        </v-chip>
-                    </v-col>
-                </v-row>
+                <div v-for="(item, i) in skillList" :key="i" style="display: inline-block;margin-right: 15px">
+                    <v-chip :color="item.color" small>
+                        <v-avatar left><v-icon>{{ item.icon }}</v-icon></v-avatar>{{ item.skill }}
+                    </v-chip>
+                </div>
             </v-card-text>
             <v-card-text>DDDDanny😎</v-card-text>
         </v-card>
@@ -52,6 +30,13 @@
                     { text: 'About', disabled: false },
                     { text: 'AboutToolHub', disabled: false }
                 ],
+                skillList: [
+                    { icon: 'mdi-vuejs', skill: 'Vue.js', color: 'success' },
+                    { icon: 'mdi-router-network', skill: 'Vue Router', color: 'teal' },
+                    { icon: 'mdi-vuetify', skill: 'Vuetify', color: 'info' },
+                    { icon: 'mdi-language-python', skill: 'Python', color: 'warning' },
+                    { icon: 'mdi-alpha-f-box-outline', skill: 'Flask', color: 'red' },
+                ]
             }
         },
         created() {
