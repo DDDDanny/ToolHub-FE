@@ -26,7 +26,7 @@
                             </v-col>
                             <v-col cols="24" md="24">
                                 <v-row justify="end">
-                                    <v-col cols="12" md="2">
+                                    <v-col cols="12" md="3" align="right">
                                         <v-btn color="blue" class="mr-4" large width="200px" @click="goDecrypt">解密</v-btn>
                                     </v-col>
                                 </v-row>
