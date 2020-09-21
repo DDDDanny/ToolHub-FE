@@ -6,7 +6,7 @@
             <v-card-title >Welcome ToolHub</v-card-title>
             <v-card-text>关于ToolHub，最初的想法是，一个练手的项目🙌</v-card-text>
             <v-card-text>然而到现在，我是想做个小型工具库，给大家提供可用性高的工具🤓</v-card-text>
-            <v-card-text>数据加密&解密、基于Faker的数据生成及导出（假数据）和计算实付款🎈</v-card-text>
+            <v-card-text>数据加密&解密、基于Faker的数据生成及导出（假数据）、计算实付款和格式化Json数据🎈</v-card-text>
             <v-card-text>希望大家能够给我提出一些建议、意见和需求，也希望能和有兴趣的同学一起合作，共同完成这个项目😋</v-card-text>
             <v-card-title>技术栈</v-card-title>
             <v-card-text>
