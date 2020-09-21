@@ -13,7 +13,7 @@
                     <v-form class="mt-1" :v-model="encryptForm" ref="form">
                         <v-container fluid>
                             <v-row justify="start">
-                                <v-col cols="8" md="4">
+                                <v-col cols="8" md="5">
                                     <v-radio-group row dark label="加密类型：" v-model="encryptForm.cate">
                                         <v-radio label="Base64" value="1"></v-radio>
                                         <v-radio label="MD5" value="2"></v-radio>
@@ -21,7 +21,7 @@
                                         <v-radio label="sha1" value="4"></v-radio>
                                     </v-radio-group>
                                 </v-col>
-                                <v-col cols="16" md="8">
+                                <v-col cols="16" md="7">
                                     <v-row justify="center" class="mr-1">
                                         <v-textarea dark label="盐（Salt）" no-resize outlined rows="1" row-height="10"
                                                     v-model="encryptForm.salt" v-if="encryptForm.cate === '1'">
@@ -41,7 +41,7 @@
                             </v-col>
                             <v-col cols="24" md="24">
                                 <v-row justify="end">
-                                    <v-col cols="12" md="2">
+                                    <v-col cols="12" md="3" align="right">
                                         <v-btn color="blue" class="mr-4" large width="200px" @click="goEncrypt">加密</v-btn>
                                     </v-col>
                                 </v-row>
