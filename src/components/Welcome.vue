@@ -1,57 +1,14 @@
 <template>
     <div>
         <v-row>
-            <v-col cols="4" md="3">
-                <v-card dark elevation="20" style="margin-top: 30px" height="370px">
-                    <v-img dark src="../static/welcome.jpg"></v-img>
+            <v-col cols="12" md="4" align="center" v-for="(item, i) in welcomeInfo" :key="i">
+                <v-card dark elevation="20" style="margin-top: 30px" height="370px" width="320">
+                    <v-img dark src="../static/welcome.jpg" height="200"></v-img>
                     <v-card-text>
-                        <v-card-title size="xl">FakerData</v-card-title>
+                        <v-card-title size="xl">{{ item.Title }}</v-card-title>
                         <hr>
-                        <v-card-subtitle>基于Python的Faker库生成随机数据 : 基础数据生成及导出</v-card-subtitle>
+                        <v-card-subtitle style="text-align: left">{{ item.Desc }}</v-card-subtitle>
                     </v-card-text>
-                    <v-bottom-navigation dark color="blue" height="50" absolute style="top: 360px">
-                        <v-btn value="favorites">
-                            <span>Favorites</span>
-                            <v-icon>mdi-heart</v-icon>
-                        </v-btn>
-                    </v-bottom-navigation>
-                </v-card>
-            </v-col>
-            <v-col cols="4" md="3">
-                <v-card dark elevation="20" style="margin-top: 30px" height="370px">
-                    <v-img dark src="../static/welcome.jpg"></v-img>
-                    <v-card-text>
-                        <v-card-title size="xl">SecretCode</v-card-title>
-                        <hr>
-                        <v-card-subtitle>用于处理数据的加密与解密</v-card-subtitle>
-                    </v-card-text>
-                    <v-bottom-navigation dark color="blue" height="50" absolute style="top: 360px">
-                        <v-btn value="favorites">
-                            <span>Favorites</span>
-                            <v-icon>mdi-heart</v-icon>
-                        </v-btn>
-                    </v-bottom-navigation>
-                </v-card>
-            </v-col>
-            <v-col cols="4" md="3">
-                <v-card dark elevation="20" style="margin-top: 30px" height="370px">
-                    <v-img dark src="../static/welcome.jpg"></v-img>
-                    <v-card-text>
-                        <v-card-title size="xl">Calculate</v-card-title>
-                        <hr>
-                        <v-card-subtitle>用于计算数据</v-card-subtitle>
-                    </v-card-text>
-                    <v-bottom-navigation dark color="blue" height="50" absolute style="top: 360px">
-                        <v-btn value="favorites">
-                            <span>Favorites</span>
-                            <v-icon>mdi-heart</v-icon>
-                        </v-btn>
-                    </v-bottom-navigation>
-                </v-card>
-            </v-col>
-            <v-col cols="4" md="3">
-                <v-card dark elevation="20" style="margin-top: 30px" height="410px">
-                    <v-card-text class="more-info">More...</v-card-text>
                 </v-card>
             </v-col>
         </v-row>
@@ -60,7 +17,28 @@
 
 <script>
     export default {
-        name: "Welcome"
+        data() {
+            return {
+                welcomeInfo: [
+                    {
+                        Title: 'FakerData',
+                        Desc: '基于Python的Faker库生成随机数据: 基础数据生成及导出'
+                    },
+                    {
+                        Title: 'SecretCode',
+                        Desc: '用于处理数据的加密与解密: 支持MD5、hmac、sha1加密和Base64加解密'
+                    },
+                    {
+                        Title: 'Calculate',
+                        Desc: '用于计算数据: 支持计算商品在打折后的实付价格'
+                    },
+                    {
+                        Title: 'FormatData',
+                        Desc: '用于格式化数据: 支持格式化Json数据'
+                    }
+                ]
+            }
+        }
     }
 </script>
 
