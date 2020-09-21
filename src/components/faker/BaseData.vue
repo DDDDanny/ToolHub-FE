@@ -3,9 +3,8 @@
         <v-breadcrumbs :items="breadItems" dark></v-breadcrumbs>
         <v-container>
             <v-row>
-                <v-col cols="6" md="2">
-                    <v-card  dark elevation="10" height="750px">
-
+                <v-col md="3">
+                    <v-card  dark elevation="10" height="750px" width="80%">
                         <v-card-title style="font-size: 15px">
                             <v-icon>mdi-format-list-bulleted-type</v-icon>
                             <span style="margin-left: 10px">类别 (Category)</span>
@@ -56,12 +55,12 @@
                                             <v-col cols="12" md="6">
                                                 <v-text-field v-model="nameParamsForm.firstName" label="名字（First name）"></v-text-field>
                                             </v-col>
-                                            <v-col cols="24" md="12">
+                                            <v-col cols="12" md="12">
                                                 <v-row justify="end" class="mt-2">
-                                                    <v-col cols="12" md="1">
+                                                    <v-col cols="12" md="3" align="right">
                                                         <v-btn dark class="mr-1" @click="paramsFormReset" large elevation="12" >重置</v-btn>
                                                     </v-col>
-                                                    <v-col cols="12" md="2" class="ml-4">
+                                                    <v-col cols="12" md="3" class="ml-4 mr-6">
                                                         <v-btn dark class="mr-4" @click="paramsFormSubmit" large width="200px" color="blue" elevation="12">生成数据</v-btn>
                                                     </v-col>
                                                 </v-row>
@@ -95,10 +94,10 @@
                                             </v-col>
                                             <v-col cols="24" md="12">
                                                 <v-row justify="end" class="mt-2">
-                                                    <v-col cols="12" md="1">
+                                                    <v-col cols="12" md="3" align="right">
                                                         <v-btn dark class="mr-1" @click="paramsFormReset" large elevation="12" >重置</v-btn>
                                                     </v-col>
-                                                    <v-col cols="12" md="2" class="ml-4">
+                                                    <v-col cols="12" md="3" class="ml-4 mr-6">
                                                         <v-btn dark class="mr-4" @click="paramsFormSubmit" large width="200px" color="blue" elevation="12">生成数据</v-btn>
                                                     </v-col>
                                                 </v-row>
@@ -114,10 +113,10 @@
                                             </v-col>
                                             <v-col cols="24" md="12">
                                                 <v-row justify="end" class="mt-2">
-                                                    <v-col cols="12" md="1">
+                                                    <v-col cols="12" md="3" align="right">
                                                         <v-btn dark class="mr-1" @click="paramsFormReset" large elevation="12" >重置</v-btn>
                                                     </v-col>
-                                                    <v-col cols="12" md="2" class="ml-4">
+                                                    <v-col cols="12" md="3" class="ml-4 mr-6">
                                                         <v-btn dark class="mr-4" @click="paramsFormSubmit" large width="200px" color="blue" elevation="12">生成数据</v-btn>
                                                     </v-col>
                                                 </v-row>
@@ -148,10 +147,10 @@
                                             </v-col>
                                             <v-col cols="24" md="12">
                                                 <v-row justify="end" class="mt-2">
-                                                    <v-col cols="12" md="1">
+                                                    <v-col cols="12" md="3" align="right">
                                                         <v-btn dark class="mr-1" @click="paramsFormReset" large elevation="12" >重置</v-btn>
                                                     </v-col>
-                                                    <v-col cols="12" md="2" class="ml-4">
+                                                    <v-col cols="12" md="3" class="ml-4 mr-6">
                                                         <v-btn dark class="mr-4" @click="paramsFormSubmit" large width="200px" color="blue" elevation="12">生成数据</v-btn>
                                                     </v-col>
                                                 </v-row>
