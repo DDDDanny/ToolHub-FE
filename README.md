@@ -1,5 +1,8 @@
 # tool-hub-fe
 
+[![Sourcegraph](https://badgen.net/github/commits/DDDDanny/ToolHub-FE)](https://badgen.net/github/commits/DDDDanny/ToolHub-FE)
+[![Sourcegraph](https://badgen.net/github/status/DDDDanny/ToolHub-FE)](https://badgen.net/github/status/DDDDanny/ToolHub-FE)    
+
 ## Project setup
 ```
 npm install
