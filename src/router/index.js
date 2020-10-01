@@ -17,15 +17,15 @@ const routes = [
   {
     path: '/', name: 'Home', component: Home, redirect: '/welcome',
     children: [
-       { path: '/welcome',  component: Welcome },
-       { path: '/about/me',  component: AboutMe },
-       { path: '/about/toolHub',  component: AboutToolHub },
-       { path: '/faker/dataGenerate',  component: BaseData },
-       { path: '/faker/dataExport',  component: ExportData },
-       { path: '/secretCode/encrypt',  component: Encrypt },
-       { path: '/secretCode/decrypt',  component: Decrypt },
-       { path: '/calculate/realPayment',  component: RealPayment },
-       { path: '/format/json',  component: FormatJson },
+       { path: '/welcome',  component: Welcome, meta: { title: 'Welcome' } },
+       { path: '/about/me',  component: AboutMe, meta: { title: 'About Me' } },
+       { path: '/about/toolHub',  component: AboutToolHub, meta: { title: 'About ToolHub' } },
+       { path: '/faker/dataGenerate',  component: BaseData, meta: { title: 'Generate Data' } },
+       { path: '/faker/dataExport',  component: ExportData, meta: { title: 'Export Data' } },
+       { path: '/secretCode/encrypt',  component: Encrypt, meta: { title: 'Encrypt' } },
+       { path: '/secretCode/decrypt',  component: Decrypt, meta: { title: 'Decrypt' } },
+       { path: '/calculate/realPayment',  component: RealPayment, meta: { title: 'Calc Real Payment' } },
+       { path: '/format/json',  component: FormatJson, meta: { title: 'Format Json' } },
     ]
   },
 ];
@@ -33,5 +33,11 @@ const routes = [
 const router = new VueRouter({
   routes
 });
+
+// 路由守卫
+router.beforeEach((to, from, next) => {
+    document.title = to.meta.title
+    next()
+})
 
 export default router
