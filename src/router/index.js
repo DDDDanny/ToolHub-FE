@@ -17,7 +17,7 @@ const routes = [
   {
     path: '/', name: 'Home', component: Home, redirect: '/welcome',
     children: [
-       { path: '/welcome',  component: Welcome, meta: { title: 'Welcome' } },
+       { path: '/welcome',  component: Welcome, meta: { title: 'Welcome ToolHub' } },
        { path: '/about/me',  component: AboutMe, meta: { title: 'About Me' } },
        { path: '/about/toolHub',  component: AboutToolHub, meta: { title: 'About ToolHub' } },
        { path: '/faker/dataGenerate',  component: BaseData, meta: { title: 'Generate Data' } },
