@@ -89,9 +89,14 @@
                     name: false, gender: false,
                     phone: false, addr: false,
                 },
-                tableExpData: [{}, {}, {}],
+                // 表格样例数据
+                tableExpData: [
+                    { name: '学生1', gender: '性别1', phone: '电话1', addr: '地址1' },
+                    { name: '学生2', gender: '性别2', phone: '电话2', addr: '地址2' },
+                    { name: '学生3', gender: '性别3', phone: '电话3', addr: '地址3' },
+                ],
                 tableHeader: ['姓名', '性别', '电话', '地址'],
-                emptyFlag: false,
+                emptyFlag: true,
                 dataNum: '',
                 dataNumRules: [
                     v => !!v || '数量不能为空 (Quantity is required)',
@@ -102,30 +107,20 @@
         methods: {
             previewTable() {
                 this.tableHeader = []
-                if (this.checkboxModel.name === true) {
-                    this.tableHeader.push('姓名')
-                    for (let i = 0; i < this.tableExpData.length; i++ ) this.tableExpData[i].name = '学生' + i
-                }
-                if (this.checkboxModel.gender === true) {
-                    this.tableHeader.push('性别')
-                    for (let i = 0; i < this.tableExpData.length; i++ ) this.tableExpData[i].gender = '性别' + i
-                }
-                if (this.checkboxModel.phone === true) {
-                    this.tableHeader.push('电话')
-                    for (let i = 0; i < this.tableExpData.length; i++ ) this.tableExpData[i].phone = '电话' + i
-                }
-                if (this.checkboxModel.addr === true) {
-                    this.tableHeader.push('地址')
-                    for (let i = 0; i < this.tableExpData.length; i++ ) this.tableExpData[i].addr = '地址' + i
-                }
+                if (this.checkboxModel.name === true) this.tableHeader.push('姓名')
+                if (this.checkboxModel.gender === true) this.tableHeader.push('性别')
+                if (this.checkboxModel.phone === true) this.tableHeader.push('电话')
+                if (this.checkboxModel.addr === true) this.tableHeader.push('地址')
                 this.emptyFlag = this.tableHeader.length === 0;
             },
             exportData() {
                 const jud = this.$refs.form.validate()
                 if (!jud) return
+                // 请求数据前，先更新一下被选择项
+                this.previewTable()
                 const {data: res} = this.$http.get('/faker/export',{
                     responseType: 'blob',
-                    params: {paramsList: this.tableHeader.toString(), dataNum: this.dataNum}
+                    params: { paramsList: this.tableHeader.toString(), dataNum: this.dataNum }
                 }).then((res) => {
                     this.$utils.exportUtils(res,'FakerDataExport.xlsx')
                 })
