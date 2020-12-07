@@ -26,6 +26,7 @@
 
         <v-app-bar app clipped-left>
             <v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
+            <!-- <img src="../assets/logo.png" style="width: 90px; margin-left: 25px;"/> -->
             <v-toolbar-title>ToolHub</v-toolbar-title>
         </v-app-bar>
 
