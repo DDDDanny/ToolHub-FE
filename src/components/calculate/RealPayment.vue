@@ -136,6 +136,7 @@
                 goodsUnitPriceRules: [
                     v => !!v || '商品价格不能为空 (Price is required)',
                     v => /^[0-9]+(.[0-9]{1,2})?$/.test(v) || '商品价格只能输入最多两位小数 (Enter up to two decimal places)',
+                    v => v != 0 || '商品数量只能输入大于0的数 (Enter an number greater than 0)',
                 ],
                 originalPriceRules: [
                     v => !!v || '商品总价格不能为空 (Total Price is required)',
