@@ -33,7 +33,7 @@
                     <v-col cols="24" md="20" class="ma-4">
                         <v-row justify="center">
                             <v-col cols="12" md="12">
-                                <v-textarea label="Format Result" no-resize outlined rows="50" row-height="15" disabled v-model="formatResult"></v-textarea>
+                                <v-textarea label="Format Result" no-resize outlined rows="50" row-height="15" readonly v-model="formatResult"></v-textarea>
                             </v-col>
                         </v-row>
                     </v-col>
